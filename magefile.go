@@ -8,10 +8,10 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/carolynvs/magex/pkg"
-	"github.com/carolynvs/magex/shx"
-	"github.com/carolynvs/magex/xplat"
 	"github.com/magefile/mage/mg"
+	"github.com/uwu-tools/magex/pkg"
+	"github.com/uwu-tools/magex/shx"
+	"github.com/uwu-tools/magex/xplat"
 )
 
 var Default = Test

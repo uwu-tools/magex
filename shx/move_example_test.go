@@ -1,6 +1,6 @@
 package shx_test
 
-import "github.com/carolynvs/magex/shx"
+import "github.com/uwu-tools/magex/shx"
 
 func ExampleMove() {
 	// Move a file from the current directory into TEMP

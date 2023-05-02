@@ -5,10 +5,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/carolynvs/magex/shx"
 	"github.com/magefile/mage/mg"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"github.com/uwu-tools/magex/shx"
 )
 
 func TestPreparedCommand_Run(t *testing.T) {

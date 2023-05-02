@@ -10,12 +10,12 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/carolynvs/magex/pkg/gopath"
+	"github.com/uwu-tools/magex/pkg/gopath"
 
 	"github.com/Masterminds/semver/v3"
-	"github.com/carolynvs/magex/pkg/downloads"
-	"github.com/carolynvs/magex/shx"
-	"github.com/carolynvs/magex/xplat"
+	"github.com/uwu-tools/magex/pkg/downloads"
+	"github.com/uwu-tools/magex/shx"
+	"github.com/uwu-tools/magex/xplat"
 )
 
 // EnsureMage checks if mage is installed, and installs it if needed.

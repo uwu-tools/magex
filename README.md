@@ -1,11 +1,11 @@
 # Magefile Extensions
 
-![test](https://github.com/carolynvs/magex/workflows/test/badge.svg)
+![test](https://github.com/uwu-tools/magex/workflows/test/badge.svg)
 
 This library provides helper methods to use with [mage](https://magefile.org).
 
 Below is a sample of the type of helpers available. Full examples and
-documentation is on [godoc](https://godoc.org/github.com/carolynvs/magex).
+documentation is on [godoc](https://godoc.org/github.com/uwu-tools/magex).
 
 ```go
 // +build mage
@@ -13,8 +13,8 @@ documentation is on [godoc](https://godoc.org/github.com/carolynvs/magex).
 package main
 
 import (
-	"github.com/carolynvs/magex/pkg"
-	"github.com/carolynvs/magex/shx"
+	"github.com/uwu-tools/magex/pkg"
+	"github.com/uwu-tools/magex/shx"
 )
 
 // Check if packr2 is in the bin/ directory and is at least v2.

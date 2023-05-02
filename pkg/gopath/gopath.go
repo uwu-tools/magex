@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/carolynvs/magex/xplat"
+	"github.com/uwu-tools/magex/xplat"
 )
 
 // EnsureGopathBin ensures that GOPATH/bin exists and is in PATH.

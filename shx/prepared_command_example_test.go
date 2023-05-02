@@ -5,7 +5,7 @@ import (
 	"log"
 	"path/filepath"
 
-	"github.com/carolynvs/magex/shx"
+	"github.com/uwu-tools/magex/shx"
 )
 
 func ExamplePreparedCommand_RunV() {

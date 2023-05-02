@@ -6,11 +6,11 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/carolynvs/magex/pkg/downloads"
-	"github.com/carolynvs/magex/pkg/gopath"
-	"github.com/carolynvs/magex/xplat"
 	"github.com/magefile/mage/mg"
 	"github.com/stretchr/testify/require"
+	"github.com/uwu-tools/magex/pkg/downloads"
+	"github.com/uwu-tools/magex/pkg/gopath"
+	"github.com/uwu-tools/magex/xplat"
 )
 
 func TestDownloadArchiveToGopathBin_OsReplacement(t *testing.T) {

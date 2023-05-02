@@ -1,7 +1,7 @@
 package shx_test
 
 import (
-	"github.com/carolynvs/magex/shx"
+	"github.com/uwu-tools/magex/shx"
 )
 
 func ExampleCopy() {

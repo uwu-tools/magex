@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/carolynvs/magex/ci"
+	"github.com/uwu-tools/magex/ci"
 )
 
 func TestExampleDetectBuildProvider(t *testing.T) {

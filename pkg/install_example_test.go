@@ -7,8 +7,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/carolynvs/magex/pkg"
-	"github.com/carolynvs/magex/pkg/gopath"
+	"github.com/uwu-tools/magex/pkg"
+	"github.com/uwu-tools/magex/pkg/gopath"
 )
 
 func TestExampleEnsureMage(t *testing.T) {

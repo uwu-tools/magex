@@ -7,10 +7,10 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/carolynvs/magex/pkg/downloads"
-	"github.com/carolynvs/magex/xplat"
 	"github.com/mholt/archiver/v3"
 	_ "github.com/mholt/archiver/v3"
+	"github.com/uwu-tools/magex/pkg/downloads"
+	"github.com/uwu-tools/magex/xplat"
 )
 
 // DownloadArchiveOptions are the set of options available for DownloadToGopathBin.

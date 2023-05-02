@@ -9,9 +9,9 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/carolynvs/magex/mgx"
 	"github.com/magefile/mage/mg"
 	"github.com/magefile/mage/sh"
+	"github.com/uwu-tools/magex/mgx"
 )
 
 type PreparedCommand struct {
@@ -71,7 +71,8 @@ func (c PreparedCommand) CollapseArgs() PreparedCommand {
 // Env defines additional environment variables for the command.
 // All ambient environment variables are included by default.
 // Example:
-//  c.Env("X=1", "Y=2")
+//
+//	c.Env("X=1", "Y=2")
 func (c PreparedCommand) Env(vars ...string) PreparedCommand {
 	for _, v := range vars {
 		c.Cmd.Env = append(c.Cmd.Env, v)

@@ -4,9 +4,9 @@ import (
 	"log"
 	"testing"
 
-	"github.com/carolynvs/magex/pkg/archive"
-	"github.com/carolynvs/magex/pkg/downloads"
-	"github.com/carolynvs/magex/pkg/gopath"
+	"github.com/uwu-tools/magex/pkg/archive"
+	"github.com/uwu-tools/magex/pkg/downloads"
+	"github.com/uwu-tools/magex/pkg/gopath"
 )
 
 func TestExampleDownloadToGopathBin(t *testing.T) {

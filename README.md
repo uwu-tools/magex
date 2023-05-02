@@ -1,11 +1,11 @@
 # Magefile Extensions
 
-![test](https://github.com/carolynvs/magex/workflows/test/badge.svg)
+![test](https://github.com/uwu-tools/magex/workflows/test/badge.svg)
 
 This library provides helper methods to use with [mage](https://magefile.org).
 
 Below is a sample of the type of helpers available. Full examples and
-documentation is on [godoc](https://godoc.org/github.com/carolynvs/magex).
+documentation is on [godoc](https://godoc.org/github.com/uwu-tools/magex).
 
 ```go
 // +build mage
@@ -13,8 +13,8 @@ documentation is on [godoc](https://godoc.org/github.com/carolynvs/magex).
 package main
 
 import (
-	"github.com/carolynvs/magex/pkg"
-	"github.com/carolynvs/magex/shx"
+	"github.com/uwu-tools/magex/pkg"
+	"github.com/uwu-tools/magex/shx"
 )
 
 // Check if packr2 is in the bin/ directory and is at least v2.
@@ -55,3 +55,19 @@ func CustomInstallTool() error {
 	return shx.Command("go", "run", "bootstrap.go").In(src).RunE()
 }
 ```
+
+## Attribution
+
+This project is a fork of https://github.com/carolynvs/magex at
+[0b6a1c6](https://github.com/carolynvs/magex/tree/0b6a1c6d5cba42cbad741c93546e99837b1c1fb9).
+
+### In Memoriam
+
+[Carolyn Van Slyck](https://github.com/carolynvs) was the original maintainer
+of this project and is no longer with us.
+She was a fan of [`mage`](https://magefile.org/) and I'd like to do my small
+part by continuing her extensions project.
+
+If you've had the opportunity to work with Carolyn and would like to leave a
+message in her memory, please take a moment to do so on her CNCF
+[memorial page](https://github.com/cncf/memorials/blob/main/carolyn-van-slyck.md).

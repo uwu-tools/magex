@@ -12,9 +12,9 @@ import (
 	"runtime"
 	"text/template"
 
-	"github.com/carolynvs/magex/pkg/gopath"
-	"github.com/carolynvs/magex/shx"
-	"github.com/carolynvs/magex/xplat"
+	"github.com/uwu-tools/magex/pkg/gopath"
+	"github.com/uwu-tools/magex/shx"
+	"github.com/uwu-tools/magex/xplat"
 )
 
 // PostDownloadHook is the handler called after downloading a file, which returns the absolute path to the binary.

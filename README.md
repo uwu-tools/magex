@@ -55,3 +55,19 @@ func CustomInstallTool() error {
 	return shx.Command("go", "run", "bootstrap.go").In(src).RunE()
 }
 ```
+
+## Attribution
+
+This project is a fork of https://github.com/carolynvs/magex at
+[0b6a1c6](https://github.com/carolynvs/magex/tree/0b6a1c6d5cba42cbad741c93546e99837b1c1fb9).
+
+### In Memoriam
+
+[Carolyn Van Slyck](https://github.com/carolynvs) was the original maintainer
+of this project and is no longer with us.
+She was a fan of [`mage`](https://magefile.org/) and I'd like to do my small
+part by continuing her extensions project.
+
+If you've had the opportunity to work with Carolyn and would like to leave a
+message in her memory, please take a moment to do so on her CNCF
+[memorial page](https://github.com/cncf/memorials/blob/main/carolyn-van-slyck.md).

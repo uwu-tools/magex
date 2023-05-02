@@ -1,61 +1,65 @@
 name: test
+
 on:
   push:
     branches:
       - main
-  pull_request: {}
+  pull_request:
 
 permissions:  # added using https://github.com/step-security/secure-repo
   contents: read
 
 jobs:
-  test-nix:
+  test:
     strategy:
       matrix:
-        runs-on: [ ubuntu-latest, macos-latest ]
+        runs-on:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+
     runs-on: ${{ matrix.runs-on }}
+
     steps:
+
       - name: Harden Runner
         uses: step-security/harden-runner@6b3083af2869dc3314a0257a42f4af696cc79ba3 # v2.3.1
         with:
           egress-policy: audit
 
       - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+
       - uses: actions/setup-go@4d34df0c2316fe8122ab82dc22947d607c0c91f9 # v4.0.0
         with:
-          go-version: '^1.14.1'
+          go-version-file: './go.mod'
+          check-latest: true
+
       - name: Install Mage
         run: go run mage.go EnsureMage
+
       - name: Run Tests in Bash
+        if: ${{ matrix.runs-on == 'ubuntu-latest' || matrix.runs-on == 'macos-latest' }}
         run: mage test
         shell: bash
         env:
           TEST_SHELL: bash
-  test-windows:
-    runs-on: windows-latest
-    steps:
-      - name: Harden Runner
-        uses: step-security/harden-runner@6b3083af2869dc3314a0257a42f4af696cc79ba3 # v2.3.1
-        with:
-          egress-policy: audit
 
-      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
-      - uses: actions/setup-go@4d34df0c2316fe8122ab82dc22947d607c0c91f9 # v4.0.0
-        with:
-          go-version: '^1.14.1'
-      - name: Install Mage
-        run: go run mage.go EnsureMage
       - name: Run Mage in CMD
+        if: ${{ matrix.runs-on == 'windows-latest' }}
         run: mage test
         shell: cmd
         env:
           TEST_SHELL: cmd
+
       - name: Run Mage in PowerShell
+        if: ${{ matrix.runs-on == 'windows-latest' }}
         run: mage test
         shell: powershell
         env:
           TEST_SHELL: powershell
+
       - name: Run Mage in Git Bash
+        if: ${{ matrix.runs-on == 'windows-latest' }}
         run: mage test
         shell: bash
         env:

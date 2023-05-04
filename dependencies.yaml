@@ -1,0 +1,10 @@
+---
+dependencies:
+
+  - name: "mage"
+    version: 1.14.0
+    refPaths:
+      - path: ./magefile.go
+        match: "pkg.EnsureMage\\(\"v((([0-9]+)\\.([0-9]+)\\.([0-9]+)(?:-([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?)(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?)"
+      - path: ./go.mod
+        match: github.com/magefile/mage v\d+.\d+.\d+

@@ -1,0 +1,13 @@
+name: Check Dependencies
+
+on:
+  pull_request:
+
+jobs:
+  dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+      - uses: cpanato/setup-zeitgeist@3e861b7af3b3b4096b0b4837b612bf0665bdb308 # v0.0.2
+
+      - run: zeitgeist validate --config ./dependencies.yaml

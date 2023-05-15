@@ -33,5 +33,5 @@ func Test() error {
 }
 
 func EnsureMage() error {
-	return pkg.EnsureMage("v1.14.0")
+	return pkg.EnsureMage("v1.15.0")
 }

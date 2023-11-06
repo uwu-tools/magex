@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
-      - uses: cpanato/setup-zeitgeist@3e861b7af3b3b4096b0b4837b612bf0665bdb308 # v0.0.2
+      - uses: cpanato/setup-zeitgeist@cd893dd3eed3213b3413aaea814549eea233d9a1 # v0.0.3
 
       - run: zeitgeist validate --config ./dependencies.yaml

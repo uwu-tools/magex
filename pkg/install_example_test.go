@@ -143,7 +143,7 @@ func TestExampleDownloadToGopathBin(t *testing.T) {
 
 func ExampleDownloadToGopathBin() {
 	url := "https://storage.googleapis.com/kubernetes-release/release/{{.VERSION}}/bin/{{.GOOS}}/{{.GOARCH}}/kubectl{{.EXT}}"
-	err := pkg.DownloadToGopathBin(url, "kubectl", "v1.19.0")
+	err := pkg.DownloadToGopathBin(url, "kubectl", "v1.30.1")
 	if err != nil {
 		log.Fatal("could not download kubectl")
 	}

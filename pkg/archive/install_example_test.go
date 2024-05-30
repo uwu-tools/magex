@@ -18,7 +18,7 @@ func ExampleDownloadToGopathBin() {
 		DownloadOptions: downloads.DownloadOptions{
 			UrlTemplate: "https://get.helm.sh/helm-{{.VERSION}}-{{.GOOS}}-{{.GOARCH}}{{.EXT}}",
 			Name:        "helm",
-			Version:     "v3.5.3",
+			Version:     "v3.15.1",
 		},
 		ArchiveExtensions: map[string]string{
 			"darwin":  ".tar.gz",

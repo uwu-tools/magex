@@ -19,7 +19,7 @@ func TestDownloadToGopathBin(t *testing.T) {
 	defer cleanup()
 
 	url := "https://dl.k8s.io/release/{{.VERSION}}/bin/{{.GOOS}}/{{.GOARCH}}/kubectl{{.EXT}}"
-	err = DownloadToGopathBin(url, "kubectl", "v1.23.0")
+	err = DownloadToGopathBin(url, "kubectl", "v1.30.1")
 	require.NoError(t, err)
 
 	_, err = exec.LookPath("kubectl" + xplat.FileExt())
@@ -67,6 +67,7 @@ func TestEnsurePackage_FreshInstall(t *testing.T) {
 
 			// Verify it's not currently installed
 			hasCmd, err := IsCommandAvailable("testpkg", "", "")
+			require.NoError(t, err)
 			require.False(t, hasCmd)
 
 			opts := EnsurePackageOptions{

@@ -63,7 +63,7 @@ func TestDownloadArchiveToGopathBin(t *testing.T) {
 		DownloadOptions: downloads.DownloadOptions{
 			UrlTemplate: "https://get.helm.sh/helm-v{{.VERSION}}-{{.GOOS}}-{{.GOARCH}}{{.EXT}}",
 			Name:        "helm",
-			Version:     "3.8.1",
+			Version:     "3.15.1",
 		},
 		ArchiveExtensions: map[string]string{
 			"linux":   ".tar.gz",

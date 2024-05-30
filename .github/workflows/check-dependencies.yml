@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4.1.3
-      - uses: cpanato/setup-zeitgeist@cd893dd3eed3213b3413aaea814549eea233d9a1 # v0.0.3
+      - uses: kubernetes-sigs/release-actions/setup-zeitgeist@2f8b9ec22aedc9ce15039b6c7716aa6c2907df1c # v0.2.0
 
       - run: zeitgeist validate --config ./dependencies.yaml

@@ -7,7 +7,7 @@ jobs:
   dependencies:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - uses: kubernetes-sigs/release-actions/setup-zeitgeist@2f8b9ec22aedc9ce15039b6c7716aa6c2907df1c # v0.2.0
 
       - run: zeitgeist validate --config ./dependencies.yaml

@@ -1,14 +1,17 @@
 package archive
 
 import (
+	"archive/tar"
+	"archive/zip"
+	"compress/gzip"
 	"fmt"
+	"io"
 	"log"
 	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 
-	"github.com/mholt/archiver/v3"
-	_ "github.com/mholt/archiver/v3"
 	"github.com/uwu-tools/magex/pkg/downloads"
 	"github.com/uwu-tools/magex/xplat"
 )
@@ -55,13 +58,24 @@ func ExtractBinaryFromArchiveHook(opts DownloadArchiveOptions) downloads.PostDow
 		}
 
 		log.Printf("extracting %s from %s...\n", targetFile, archiveFile)
-
-		// Extract the binary
-		err = archiver.Extract(archiveFile, targetFile, outDir)
-		if err != nil {
-			return "", fmt.Errorf("unable to unpack %s: %w", archiveFile, err)
+		destinationFilePath := filepath.Join(outDir, targetFile)
+		if err = os.MkdirAll(filepath.Dir(destinationFilePath), 0700); err != nil {
+			return "", err
 		}
 
+		if strings.HasSuffix(archiveFile, ".zip") {
+			if err = extractZip(archiveFile, targetFile, destinationFilePath); err != nil {
+				return "", err
+			}
+		} else if strings.HasSuffix(archiveFile, ".tar.gz") || strings.HasSuffix(archiveFile, ".tgz") {
+			if err = extractTar(archiveFile, targetFile, destinationFilePath); err != nil {
+				return "", err
+			}
+		} else {
+			return "", fmt.Errorf("unable to determine archive type of file %s", archiveFile)
+		}
+
+		// Extract the binary
 		// The extracted file may be nested depending on its position in the archive
 		binFile := filepath.Join(outDir, targetFile)
 
@@ -72,4 +86,74 @@ func ExtractBinaryFromArchiveHook(opts DownloadArchiveOptions) downloads.PostDow
 
 		return binFile, nil
 	}
+}
+
+func extractZip(archiveFile string, targetFile string, destinationFilePath string) error {
+	archive, err := zip.OpenReader(archiveFile)
+	if err != nil {
+		return fmt.Errorf("unable to open %s for reading: %w", archiveFile, err)
+	}
+	defer archive.Close()
+
+	for _, f := range archive.File {
+		if f.Name == targetFile {
+
+			dstFile, err := os.OpenFile(destinationFilePath, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, f.Mode())
+			if err != nil {
+				return fmt.Errorf("unable to open %s for writing: %w", destinationFilePath, err)
+			}
+
+			fileInArchive, err := f.Open()
+			if err != nil {
+				return err
+			}
+
+			if _, err := io.Copy(dstFile, fileInArchive); err != nil {
+				return fmt.Errorf("unable to unpack %s: %w", archiveFile, err)
+			}
+
+			dstFile.Close()
+			fileInArchive.Close()
+		}
+	}
+
+	return nil
+}
+
+func extractTar(archiveFile string, targetFile string, destinationFilePath string) error {
+	gzipStream, err := os.Open(archiveFile)
+	if err != nil {
+		return err
+	}
+
+	uncompressedStream, err := gzip.NewReader(gzipStream)
+	if err != nil {
+		return err
+	}
+
+	tarReader := tar.NewReader(uncompressedStream)
+
+	for {
+		header, err := tarReader.Next()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			return err
+		}
+
+		if header.Name == targetFile {
+			dstFile, err := os.Create(destinationFilePath)
+			if err != nil {
+				return fmt.Errorf("unable to open %s for writing: %w", destinationFilePath, err)
+			}
+
+			_, err = io.Copy(dstFile, tarReader)
+			if err != nil {
+				return err
+			}
+		}
+	}
+
+	return nil
 }
